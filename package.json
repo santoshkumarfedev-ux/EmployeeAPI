@@ -4,10 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-  "start": "ts-node server.ts"
-},
-
-
+    "start": "ts-node server.ts"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/santoshkumarfedev-ux/EmployeeAPI.git"
