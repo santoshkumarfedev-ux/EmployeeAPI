@@ -62,6 +62,22 @@ app.delete('/api/employees/:id', (req: Request, res: Response) => {
   res.status(200).json({ message: `Employee ${deleted.name} deleted successfully`, employee: deleted });
 });
 
+
+// ✅ PUT update employee by ID
+app.put('/api/employees/:id', (req: Request, res: Response) => {
+  const { id } = req.params;
+  const updatedEmployee: Employee = req.body;
+
+  const index = employees.findIndex(emp => emp.id === id);
+  if (index === -1) {
+    return res.status(404).json({ message: `Employee with ID ${id} not found` });
+  }
+
+  employees[index] = { ...employees[index], ...updatedEmployee };
+  res.status(200).json(employees[index]);
+});
+
+
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`✅ Server running on port ${PORT}`);
